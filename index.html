@@ -151,6 +151,7 @@
                 kills_needed = (des_kd*(parseInt(deaths)+parseInt(est_deaths)))-kills
                 kills_needed = Math.ceil(kills_needed)
                 if (kills_needed >= 0) { document.getElementById("killRes").innerHTML = (kills_needed)}
+                else { document.getElementById("killRes").innerHTML = 0}
                
             }
             function openTracker() {
