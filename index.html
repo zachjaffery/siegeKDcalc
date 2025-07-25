@@ -31,7 +31,7 @@
                 border-radius: 15px;
                 vertical-align: baseline;
                 font-family: "Funnel Sans";
-                text-align: center;
+                text-align: left;
             }
             #est_deaths {
                 vertical-align: -10px;
@@ -51,59 +51,79 @@
                 font-family: "Funnel Sans";
                 margin: auto;
             }
-            h2 {
+            .h2left {
+                text-align: left;
+                font-family: "Funnel Sans";
+            }
+            .h2center {
                 text-align: center;
                 font-family: "Funnel Sans";
             }
             form {
                 margin: auto;
             }
+            .left {
+                width: 50%;
+                float: left;
+            }
+            .clear {
+                clear:both;
+            }
+            .bottom {
+                margin: auto;
+
+            }
         </style>
         <title>Siege K/D Kill Calculator</title>
     </head>
     <body>
-        <div style="display: flex; flex-direction: row; align-items: center; justify-content: center;">
-            <div>
+        <div style="display: flex; flex-direction: row; align-items: center; justify-content: center;"  class="left">
+            <div  class="left">
               <h1>Siege K/D Kill Calculator</h1>
             
                 <form onsubmit="calcKills()">
-                    <label for="kills"><br>Current Kills:</label>
-                    <input type="number" id="kills" name="kills" step="1" min = "0" onchange="changeK()">
-                    <label for="deaths"><br>Current Deaths:</label>
-                    <input type="number" id="deaths" name="deaths" min = "0" step="1" onchange="changeD()">
-                    <label for="des_kd"><br>Desired KD</label>
-                    <input type="number" id="des_kd" name="des_kd" min="0" onchange="changeDes()">
-                    <label for="est_deaths"><br>Estimated Deaths:</label>
-                    <input type="range" min="0" value="25" class="slider" id="est_deaths" oninput="this.nextElementSibling.value = this.value" onchange="changeEst()">
-                    <output>25</output>
+                    <div class="left">
+                        <label for="kills"><br>Current Kills:</label>
+                        <input type="number" id="kills" name="kills" step="1" min = "0" onchange="changeK()">
+                        <label for="deaths"><br>Current Deaths:</label>
+                        <input type="number" id="deaths" name="deaths" min = "0" step="1" onchange="changeD()">
+                        <label for="des_kd"><br>Desired KD</label>
+                        <input type="number" id="des_kd" name="des_kd" min="0" onchange="changeDes()">
+                        <label for="est_deaths"><br>Estimated Deaths:</label>
+                        <input type="range" min="0" value="25" class="slider" id="est_deaths" oninput="this.nextElementSibling.value = this.value" onchange="changeEst()">
+                        <output>25</output>
+                    </div>
                 </form>
             </div>
         </div><br>
-        <div>
-            <h2>You will need:</h2><br>
-        </div>
-        <div>
-            <p id="killRes">0</p> <p>kills</p>
-        </div>
+        
 
-        <div>
-            <h2>To go to R6 Tracker:</h2>
+        <div  class="left">
+            
             <form id="r6link">
-                <label for="ign"><br>Username:</label>
-                <input type="text" id="ign" name="ign">
-                <label for="platform"><br>Platform:</label><br>
-                <input type="radio" id="xbl" name="platform" value="xbl">
-                <label for="xbl">Xbox</label><br>
-                <input type="radio" id="psn" name="platform" value="psn">
-                <label for="psn">Playstation</label><br>
-                
+                <div>
+                    <h2 class="h2left">To go to R6 Tracker:</h2>
+                    <label for="ign"><br>Username:</label>
+                    <input type="text" id="ign" name="ign">
+                    <label for="platform"><br>Platform:</label><br>
+                    <input type="radio" id="xbl" name="platform" value="xbl">
+                    <label for="xbl">Xbox</label><br>
+                    <input type="radio" id="psn" name="platform" value="psn">
+                    <label for="psn">Playstation</label><br>
+                    <button type="button" onclick="openTracker()">Open R6 Tracker</button>
+                </div>
             </form>
-            <button type="button" onclick="openTracker()">Open R6 Tracker</button>
+            
         </div>
-        <div>
-            <p id="test">test</p>
+        <div class="clear">&nbsp;</div>
+        <div class="bottom">
+            <div>
+                <h2 class="h2center">You will need:</h2><br>
+            </div>
+            <div>
+                <p id="killRes">0</p> <p>kills</p>
+            </div>
         </div>
-
         <script>
             let kills = 0
             let deaths = 0
