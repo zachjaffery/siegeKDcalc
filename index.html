@@ -92,14 +92,17 @@
                 <label for="ign"><br>Username:</label>
                 <input type="text" id="ign" name="ign">
                 <label for="platform"><br>Platform:</label><br>
-                <input type="radio" id="xbl" name="platform" value="Xbox">
+                <input type="radio" id="xbl" name="platform" value="xbl">
                 <label for="xbl">Xbox</label><br>
-                <input type="radio" id="psn" name="platform" value="Playstation">
+                <input type="radio" id="psn" name="platform" value="psn">
                 <label for="psn">Playstation</label><br>
-                <button type="button" onclick="openTracker()">Open R6 Tracker</button>
+                
             </form>
+            <button type="button" onclick="openTracker()">Open R6 Tracker</button>
         </div>
-
+        <div>
+            <p id="test">test</p>
+        </div>
 
         <script>
             let kills = 0
@@ -131,12 +134,12 @@
                
             }
             function openTracker() {
-                var platform = String(document.querySelector('input[name="platform"]:checked'))
-                var ign = String(document.querySelector('input[name="ign"]'))
-                var base_url = "https://r6.tracker.network/r6siege/profile/{platform}/{ign}/seasons?gamemode=pvp_ranked&page=1"
-                var user = {"platform":platform,"ign":ign}
-                var curr_url = base_url.format(user)
-                window.open(curr_url)
+                
+                const platform = document.querySelector('input[name="platform"]:checked').value;
+                const ign = document.getElementById('ign').value;
+                var base_url = `https://r6.tracker.network/r6siege/profile/${platform}/${ign}/seasons?gamemode=pvp_ranked&page=1`;
+                window.open(base_url)
+                
             }
             
         </script>
