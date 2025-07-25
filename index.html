@@ -31,6 +31,7 @@
                 border-radius: 15px;
                 vertical-align: baseline;
                 font-family: "Funnel Sans";
+                text-align: center;
             }
             #est_deaths {
                 vertical-align: -10px;
@@ -48,10 +49,14 @@
                 font-size:15px;
                 vertical-align:middle;
                 font-family: "Funnel Sans";
+                margin: auto;
             }
             h2 {
                 text-align: center;
                 font-family: "Funnel Sans";
+            }
+            form {
+                margin: auto;
             }
         </style>
         <title>Siege K/D Kill Calculator</title>
@@ -80,6 +85,22 @@
         <div>
             <p id="killRes">0</p> <p>kills</p>
         </div>
+
+        <div>
+            <h2>To go to R6 Tracker:</h2>
+            <form id="r6link">
+                <label for="ign"><br>Username:</label>
+                <input type="text" id="ign" name="ign">
+                <label for="platform"><br>Platform:</label><br>
+                <input type="radio" id="xbl" name="platform" value="Xbox">
+                <label for="xbl">Xbox</label><br>
+                <input type="radio" id="psn" name="platform" value="Playstation">
+                <label for="psn">Playstation</label><br>
+                <button type="button" onclick="openTracker()">Open R6 Tracker</button>
+            </form>
+        </div>
+
+
         <script>
             let kills = 0
             let deaths = 0
@@ -109,7 +130,14 @@
                 if (kills_needed >= 0) { document.getElementById("killRes").innerHTML = (kills_needed)}
                
             }
-            
+            function openTracker() {
+                var platform = String(document.querySelector('input[name="genderS"]:checked'))
+                var ign = String(document.querySelector('input[name="ign"]'))
+                var base_url = "https://r6.tracker.network/r6siege/profile/{platform}/{ign}/seasons?gamemode=pvp_ranked&page=1"
+                var user = {"platform":platform,"ign":ign}
+                var curr_url = base_url.format(user)
+                window.open(curr_url)
+            }
             
         </script>
     </body>
